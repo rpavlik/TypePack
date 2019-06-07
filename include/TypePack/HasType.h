@@ -36,23 +36,21 @@
 // Standard includes
 #include <type_traits>
 
-namespace osvr {
 namespace typepack {
-    /// \cond
-    namespace detail {
-        template <typename, typename = void> struct has_type_ {
-            using type = std::false_type;
-        };
+/// \cond
+namespace detail {
+    template <typename, typename = void> struct has_type_ {
+        using type = std::false_type;
+    };
 
-        template <typename T> struct has_type_<T, void_<typename T::type>> {
-            using type = std::true_type;
-        };
+    template <typename T> struct has_type_<T, void_<typename T::type>> {
+        using type = std::true_type;
+    };
 
-    } // namespace detail
-    /// \endcond
+} // namespace detail
+/// \endcond
 
-    /// An alias for `std::true_type` if `T::type` exists and names a type;
-    /// otherwise, it's an alias for `std::false_type`.
-    template <typename T> using has_type = t_<detail::has_type_<T>>;
+/// An alias for `std::true_type` if `T::type` exists and names a type;
+/// otherwise, it's an alias for `std::false_type`.
+template <typename T> using has_type = t_<detail::has_type_<T>>;
 } // namespace typepack
-} // namespace osvr

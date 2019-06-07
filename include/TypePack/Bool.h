@@ -36,9 +36,7 @@
 // Standard includes
 #include <type_traits>
 
-namespace osvr {
 namespace typepack {
-    /// @brief Alias template to simplify creating a boolean integral constant
-    template <bool V> using bool_ = std::integral_constant<bool, V>;
+/// @brief Alias template to simplify creating a boolean integral constant
+template <bool V> using bool_ = std::integral_constant<bool, V>;
 } // namespace typepack
-} // namespace osvr

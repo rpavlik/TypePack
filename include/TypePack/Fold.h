@@ -30,30 +30,26 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    namespace detail {
-        // Fold: Forward declaration of general form
-        template <typename List, typename State, typename Fun> struct fold_;
+namespace detail {
+    // Fold: Forward declaration of general form
+    template <typename List, typename State, typename Fun> struct fold_;
 
-        // Fold: Recurse
-        template <typename List, typename State, typename Fun>
-        struct fold_
-            : fold_<tail<List>, t_<apply<Fun, State, head<List>>>, Fun> {};
-
-        // Fold: base case
-        template <typename State, typename Fun>
-        struct fold_<list<>, State, Fun> {
-            using type = State;
-        };
-
-    } // namespace detail
-
-    /// @brief Fold the list (right) with the given alias class and initial
-    /// state.
+    // Fold: Recurse
     template <typename List, typename State, typename Fun>
-    using fold = t_<detail::fold_<List, State, Fun>>;
+    struct fold_ : fold_<tail<List>, t_<apply<Fun, State, head<List>>>, Fun> {};
+
+    // Fold: base case
+    template <typename State, typename Fun> struct fold_<list<>, State, Fun> {
+        using type = State;
+    };
+
+} // namespace detail
+
+/// @brief Fold the list (right) with the given alias class and initial
+/// state.
+template <typename List, typename State, typename Fun>
+using fold = t_<detail::fold_<List, State, Fun>>;
 
 } // namespace typepack
-} // namespace osvr

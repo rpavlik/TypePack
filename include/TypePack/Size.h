@@ -36,26 +36,25 @@
 
 // Standard includes
 // - none
-namespace osvr {
+
 namespace typepack {
-    namespace detail {
-        template <typename... Ts> struct size;
+namespace detail {
+    template <typename... Ts> struct size;
 
-        // The following fails with clang due to a bug.
-        // <https://llvm.org/bugs/show_bug.cgi?id=14858>
-        // template <typename... Ts> using size_impl =
-        // size_t_<sizeof...(Ts)>;
-        // template <typename... Ts>
-        // struct size<list<Ts...>> : size_impl<Ts...> {};
-        template <typename... Ts>
-        struct size<list<Ts...>> : size_t_<sizeof...(Ts)> {};
-    } // namespace detail
+    // The following fails with clang due to a bug.
+    // <https://llvm.org/bugs/show_bug.cgi?id=14858>
+    // template <typename... Ts> using size_impl =
+    // size_t_<sizeof...(Ts)>;
+    // template <typename... Ts>
+    // struct size<list<Ts...>> : size_impl<Ts...> {};
+    template <typename... Ts>
+    struct size<list<Ts...>> : size_t_<sizeof...(Ts)> {};
+} // namespace detail
 
-    /// @brief Get the size of a list (number of elements.)
-    template <typename... Ts> using size = detail::size<coerce_list<Ts...>>;
+/// @brief Get the size of a list (number of elements.)
+template <typename... Ts> using size = detail::size<coerce_list<Ts...>>;
 
-    /// @brief Synonym for typepack::size
-    template <typename... Ts> using length = size<coerce_list<Ts...>>;
+/// @brief Synonym for typepack::size
+template <typename... Ts> using length = size<coerce_list<Ts...>>;
 
 } // namespace typepack
-} // namespace osvr

@@ -32,47 +32,43 @@
 // Standard includes
 #include <array>
 
-namespace osvr {
 namespace typepack {
-    /// @brief A class that uses types as an index into a container with
-    /// uniform-typed contents, somewhat like a map except all elements are
-    /// default-constructed rather than having an optional "not set" status.
-    /// (You may emulate this by providing a specialization of
-    /// boost::optional<> as your value type.)
-    ///
-    /// Values can be accessed just as all other type-keyed containers.
-    ///
-    /// Runtime performance of element access is constant (equal to array
-    /// element access with a constant index)
-    template <typename KeyList, typename ValueType>
-    class TypeKeyedMap
-        : public TypeKeyedBase<TypeKeyedMap<KeyList, ValueType>> {
-        using size_constant = length<KeyList>;
+/// @brief A class that uses types as an index into a container with
+/// uniform-typed contents, somewhat like a map except all elements are
+/// default-constructed rather than having an optional "not set" status.
+/// (You may emulate this by providing a specialization of
+/// boost::optional<> as your value type.)
+///
+/// Values can be accessed just as all other type-keyed containers.
+///
+/// Runtime performance of element access is constant (equal to array
+/// element access with a constant index)
+template <typename KeyList, typename ValueType>
+class TypeKeyedMap : public TypeKeyedBase<TypeKeyedMap<KeyList, ValueType>> {
+    using size_constant = length<KeyList>;
 
-      public:
-        using key_types = KeyList;
-        using value_type = ValueType;
+  public:
+    using key_types = KeyList;
+    using value_type = ValueType;
 
-      private:
-        template <typename, typename>
-        friend struct typekeyed_detail::ValueAccessor;
-        using container_type = std::array<value_type, size_constant::value>;
-        /// Internal method/implementation detail, do not use in consuming code!
-        container_type &nested_container() { return container_; }
-        /// Internal method/implementation detail, do not use in consuming code!
-        container_type const &nested_container() const { return container_; }
+  private:
+    template <typename, typename> friend struct typekeyed_detail::ValueAccessor;
+    using container_type = std::array<value_type, size_constant::value>;
+    /// Internal method/implementation detail, do not use in consuming code!
+    container_type &nested_container() { return container_; }
+    /// Internal method/implementation detail, do not use in consuming code!
+    container_type const &nested_container() const { return container_; }
 
-      private:
-        container_type container_;
+  private:
+    container_type container_;
+};
+
+// Required traits
+namespace typekeyed_detail {
+    template <typename KeyList, typename ValueType, typename Key>
+    struct ValueTypeAtKeyTraits<TypeKeyedMap<KeyList, ValueType>, Key> {
+        using type = ValueType;
     };
 
-    // Required traits
-    namespace typekeyed_detail {
-        template <typename KeyList, typename ValueType, typename Key>
-        struct ValueTypeAtKeyTraits<TypeKeyedMap<KeyList, ValueType>, Key> {
-            using type = ValueType;
-        };
-
-    } // namespace typekeyed_detail
+} // namespace typekeyed_detail
 } // namespace typepack
-} // namespace osvr

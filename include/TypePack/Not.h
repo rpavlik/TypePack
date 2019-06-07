@@ -35,11 +35,10 @@
 
 // Standard includes
 // - none
-namespace osvr {
+
 namespace typepack {
 
-    /// Logical not on a single boolean.
-    template <typename Bool> using not_ = bool_<!Bool::value>;
+/// Logical not on a single boolean.
+template <typename Bool> using not_ = bool_<!Bool::value>;
 
 } // namespace typepack
-} // namespace osvr

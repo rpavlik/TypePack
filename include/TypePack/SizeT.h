@@ -37,11 +37,8 @@
 #include <cstddef>
 #include <type_traits>
 
-namespace osvr {
 namespace typepack {
-    /// @brief Alias template to simplify creating an integral constant of
-    /// size_t
-    template <std::size_t V>
-    using size_t_ = std::integral_constant<std::size_t, V>;
+/// @brief Alias template to simplify creating an integral constant of
+/// size_t
+template <std::size_t V> using size_t_ = std::integral_constant<std::size_t, V>;
 } // namespace typepack
-} // namespace osvr

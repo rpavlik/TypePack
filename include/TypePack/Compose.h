@@ -36,20 +36,17 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    /// Compose the Alias Classes \p Fs in the parameter pack \p Ts.
-    template <typename... Fs> struct compose {};
+/// Compose the Alias Classes \p Fs in the parameter pack \p Ts.
+template <typename... Fs> struct compose {};
 
-    template <typename F0> struct compose<F0> {
-        template <typename... Ts> using apply = typepack::apply<F0, Ts...>;
-    };
+template <typename F0> struct compose<F0> {
+    template <typename... Ts> using apply = typepack::apply<F0, Ts...>;
+};
 
-    template <typename F0, typename... Fs> struct compose<F0, Fs...> {
-        template <typename... Ts>
-        using apply =
-            typepack::apply<F0, typepack::apply<compose<Fs...>, Ts...>>;
-    };
+template <typename F0, typename... Fs> struct compose<F0, Fs...> {
+    template <typename... Ts>
+    using apply = typepack::apply<F0, typepack::apply<compose<Fs...>, Ts...>>;
+};
 } // namespace typepack
-} // namespace osvr

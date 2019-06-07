@@ -37,30 +37,28 @@
 // Standard includes
 #include <type_traits>
 
-namespace osvr {
 namespace typepack {
-    /// \cond
-    namespace detail {
-        template <typename...> struct if_impl {};
+/// \cond
+namespace detail {
+    template <typename...> struct if_impl {};
 
-        template <typename If>
-        struct if_impl<If> : std::enable_if<If::type::value> {};
+    template <typename If>
+    struct if_impl<If> : std::enable_if<If::type::value> {};
 
-        template <typename If, typename Then>
-        struct if_impl<If, Then> : std::enable_if<If::type::value, Then> {};
+    template <typename If, typename Then>
+    struct if_impl<If, Then> : std::enable_if<If::type::value, Then> {};
 
-        template <typename If, typename Then, typename Else>
-        struct if_impl<If, Then, Else>
-            : std::conditional<If::type::value, Then, Else> {};
-    } // namespace detail
-    /// \endcond
+    template <typename If, typename Then, typename Else>
+    struct if_impl<If, Then, Else>
+        : std::conditional<If::type::value, Then, Else> {};
+} // namespace detail
+/// \endcond
 
-    /// Select one type or another depending on a compile-time Boolean integral
-    /// constant type.
-    template <typename... Args> using if_ = t_<detail::if_impl<Args...>>;
+/// Select one type or another depending on a compile-time Boolean integral
+/// constant type.
+template <typename... Args> using if_ = t_<detail::if_impl<Args...>>;
 
-    /// Select one type or another depending on a compile-time Boolean value.
-    template <bool If, typename... Args>
-    using if_c = t_<detail::if_impl<bool_<If>, Args...>>;
+/// Select one type or another depending on a compile-time Boolean value.
+template <bool If, typename... Args>
+using if_c = t_<detail::if_impl<bool_<If>, Args...>>;
 } // namespace typepack
-} // namespace osvr

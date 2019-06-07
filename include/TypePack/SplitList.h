@@ -27,33 +27,31 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
-    namespace detail {
-        /// General/dummy case.
-        template <typename... List> struct split_list_ {
-            using head = void;
-            using tail = list<>;
-        };
+namespace detail {
+    /// General/dummy case.
+    template <typename... List> struct split_list_ {
+        using head = void;
+        using tail = list<>;
+    };
 
-        /// Unwrap type pack.
-        template <typename... List>
-        struct split_list_<list<List...>> : split_list_<List...> {};
-
-        /// Primary case
-        template <typename Head, typename... Tail>
-        struct split_list_<Head, Tail...> {
-            using head = Head;
-            using tail = list<Tail...>;
-        };
-    } // namespace detail
-
-    /// Get the first element of a list.
+    /// Unwrap type pack.
     template <typename... List>
-    using head = typename detail::split_list_<List...>::head;
+    struct split_list_<list<List...>> : split_list_<List...> {};
 
-    /// Get the list without its first element
-    template <typename... List>
-    using tail = typename detail::split_list_<List...>::tail;
+    /// Primary case
+    template <typename Head, typename... Tail>
+    struct split_list_<Head, Tail...> {
+        using head = Head;
+        using tail = list<Tail...>;
+    };
+} // namespace detail
+
+/// Get the first element of a list.
+template <typename... List>
+using head = typename detail::split_list_<List...>::head;
+
+/// Get the list without its first element
+template <typename... List>
+using tail = typename detail::split_list_<List...>::tail;
 } // namespace typepack
-} // namespace osvr

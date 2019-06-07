@@ -36,41 +36,39 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    /// \cond
-    namespace detail {
+/// \cond
+namespace detail {
 
-        template <template <typename...> class, typename> struct defer_ {};
+    template <template <typename...> class, typename> struct defer_ {};
 
-        template <template <typename...> class C, typename... Ts>
-        struct defer_<C, list<Ts...>> {
-            using type = C<Ts...>;
-        };
-    } // namespace detail
-    /// \endcond
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    // defer
-    /// A wrapper that defers the instantiation of a template \p C with type
-    /// parameters \p Ts in
-    /// a \c lambda or \c let expression.
-    ///
-    /// In the code below, the lambda would ideally be written as
-    /// `lambda<_a,_b,push_back<_a,_b>>`, however this fails since
-    /// `push_back` expects its first
-    /// argument to be a list, not a placeholder. Instead, we express it
-    /// using \c defer as
-    /// follows:
-    ///
-    /// \code
-    /// template<typename List>
-    /// using reverse = reverse_fold<List, list<>, lambda<_a, _b,
-    /// defer<push_back, _a, _b>>>;
-    /// \endcode
     template <template <typename...> class C, typename... Ts>
-    struct defer : detail::defer_<C, list<Ts...>> {};
+    struct defer_<C, list<Ts...>> {
+        using type = C<Ts...>;
+    };
+} // namespace detail
+/// \endcond
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// defer
+/// A wrapper that defers the instantiation of a template \p C with type
+/// parameters \p Ts in
+/// a \c lambda or \c let expression.
+///
+/// In the code below, the lambda would ideally be written as
+/// `lambda<_a,_b,push_back<_a,_b>>`, however this fails since
+/// `push_back` expects its first
+/// argument to be a list, not a placeholder. Instead, we express it
+/// using \c defer as
+/// follows:
+///
+/// \code
+/// template<typename List>
+/// using reverse = reverse_fold<List, list<>, lambda<_a, _b,
+/// defer<push_back, _a, _b>>>;
+/// \endcode
+template <template <typename...> class C, typename... Ts>
+struct defer : detail::defer_<C, list<Ts...>> {};
 
 } // namespace typepack
-} // namespace osvr

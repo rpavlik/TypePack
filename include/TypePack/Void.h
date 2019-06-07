@@ -37,11 +37,9 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    /// An alias for `void`.
-    template <typename... Ts> using void_ = apply<always<void>, Ts...>;
+/// An alias for `void`.
+template <typename... Ts> using void_ = apply<always<void>, Ts...>;
 
 } // namespace typepack
-} // namespace osvr

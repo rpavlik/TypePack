@@ -28,7 +28,6 @@
 
 #pragma once
 
-namespace osvr {
 /// @brief A simple argument-pack-based metaprogramming library, inspired by
 /// and based partially on https://ericniebler.github.io/meta
 ///
@@ -36,7 +35,6 @@ namespace osvr {
 /// to build on MSVC 2013, as well as additional functionality not found in
 /// meta.
 namespace typepack {} // namespace typepack
-} // namespace osvr
 
 // Full-include list simply generated as follows. (Yes, topological sort would
 // be preferred, I think.)

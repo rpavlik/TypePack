@@ -36,22 +36,20 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    namespace detail {
-        struct list_base_ {};
-    } // namespace detail
+namespace detail {
+    struct list_base_ {};
+} // namespace detail
 
-    /// @brief A wrapper for a template parameter pack of types.
-    ///
-    /// Note that passing a single list<...> as the parameter to list<> will not
-    /// change the type (doesn't nest the lists), so this is safe. If you need
-    /// to ensure some argument is just a list, see typepack::coerce_list.
-    template <typename... Ts> struct list : detail::list_base_ {
-        using type = list;
-    };
-    template <typename... Ts> struct list<list<Ts...>> : list<Ts...>::type {};
+/// @brief A wrapper for a template parameter pack of types.
+///
+/// Note that passing a single list<...> as the parameter to list<> will not
+/// change the type (doesn't nest the lists), so this is safe. If you need
+/// to ensure some argument is just a list, see typepack::coerce_list.
+template <typename... Ts> struct list : detail::list_base_ {
+    using type = list;
+};
+template <typename... Ts> struct list<list<Ts...>> : list<Ts...>::type {};
 
 } // namespace typepack
-} // namespace osvr

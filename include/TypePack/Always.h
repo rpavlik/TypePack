@@ -36,19 +36,17 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    /// @brief A Alias Class that always returns \p T.
-    template <typename T> struct always {
-      private:
-        // Redirect through a class template for compilers that have not
-        // yet implemented CWG 1558:
-        // <http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#1558>
-        template <typename...> struct impl { using type = T; };
+/// @brief A Alias Class that always returns \p T.
+template <typename T> struct always {
+  private:
+    // Redirect through a class template for compilers that have not
+    // yet implemented CWG 1558:
+    // <http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#1558>
+    template <typename...> struct impl { using type = T; };
 
-      public:
-        template <typename... Ts> using apply = t_<impl<Ts...>>;
-    };
+  public:
+    template <typename... Ts> using apply = t_<impl<Ts...>>;
+};
 } // namespace typepack
-} // namespace osvr

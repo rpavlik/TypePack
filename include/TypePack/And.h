@@ -38,26 +38,24 @@
 // Standard includes
 #include <type_traits>
 
-namespace osvr {
 namespace typepack {
 
-    /// \cond
-    namespace detail {
-        template <typename... Bools> struct and_impl;
+/// \cond
+namespace detail {
+    template <typename... Bools> struct and_impl;
 
-        template <> struct and_impl<> : std::true_type {};
+    template <> struct and_impl<> : std::true_type {};
 
-        template <typename Bool, typename... Bools>
-        struct and_impl<Bool, Bools...>
-            : if_<bool_<!Bool::type::value>, std::false_type,
-                  and_impl<Bools...>> {};
+    template <typename Bool, typename... Bools>
+    struct and_impl<Bool, Bools...>
+        : if_<bool_<!Bool::type::value>, std::false_type, and_impl<Bools...>> {
+    };
 
-    } // namespace detail
-    /// \endcond
+} // namespace detail
+/// \endcond
 
-    /// Logically and together all the integral constant-wrapped Boolean
-    /// parameters, \e with short-circuiting.
-    template <typename... Bools> using and_ = t_<detail::and_impl<Bools...>>;
+/// Logically and together all the integral constant-wrapped Boolean
+/// parameters, \e with short-circuiting.
+template <typename... Bools> using and_ = t_<detail::and_impl<Bools...>>;
 
 } // namespace typepack
-} // namespace osvr

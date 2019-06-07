@@ -28,15 +28,13 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
-    namespace detail {
-        template <typename T> struct push_front_impl {
-            template <typename... Ts> using apply = list<T, Ts...>;
-        };
-    } // namespace detail
+namespace detail {
+    template <typename T> struct push_front_impl {
+        template <typename... Ts> using apply = list<T, Ts...>;
+    };
+} // namespace detail
 
-    template <typename List, typename T>
-    using push_front = apply_list<detail::push_front_impl<T>, List>;
+template <typename List, typename T>
+using push_front = apply_list<detail::push_front_impl<T>, List>;
 } // namespace typepack
-} // namespace osvr

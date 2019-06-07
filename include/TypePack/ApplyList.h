@@ -38,20 +38,18 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
-    namespace detail {
-        /// General/dummy case.
-        template <typename F, typename List> struct apply_list_;
-        template <typename F, typename... Args>
-        struct apply_list_<F, list<Args...>> {
-            // the simpler solution doesn't build with MSVC 2013
-            template <typename...> using apply = typepack::apply<F, Args...>;
-        };
-    } // namespace detail
+namespace detail {
+    /// General/dummy case.
+    template <typename F, typename List> struct apply_list_;
+    template <typename F, typename... Args>
+    struct apply_list_<F, list<Args...>> {
+        // the simpler solution doesn't build with MSVC 2013
+        template <typename...> using apply = typepack::apply<F, Args...>;
+    };
+} // namespace detail
 
-    /// Apply an alias class, exploding the list of args
-    template <typename F, typename Args>
-    using apply_list = apply<detail::apply_list_<F, Args>>;
+/// Apply an alias class, exploding the list of args
+template <typename F, typename Args>
+using apply_list = apply<detail::apply_list_<F, Args>>;
 } // namespace typepack
-} // namespace osvr

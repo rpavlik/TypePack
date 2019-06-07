@@ -37,11 +37,9 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    /// Turn a trait \p C into a Alias Class.
-    template <template <typename...> class C>
-    using quote_trait = compose<quote<t_>, quote<C>>;
+/// Turn a trait \p C into a Alias Class.
+template <template <typename...> class C>
+using quote_trait = compose<quote<t_>, quote<C>>;
 } // namespace typepack
-} // namespace osvr

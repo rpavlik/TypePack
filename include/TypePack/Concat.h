@@ -37,41 +37,39 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
-    /// \cond
-    namespace detail {
-        template <typename... Lists> struct concat_ {};
+/// \cond
+namespace detail {
+    template <typename... Lists> struct concat_ {};
 
-        template <> struct concat_<> { using type = list<>; };
+    template <> struct concat_<> { using type = list<>; };
 
-        template <typename... List1> struct concat_<list<List1...>> {
-            using type = list<List1...>;
-        };
+    template <typename... List1> struct concat_<list<List1...>> {
+        using type = list<List1...>;
+    };
 
-        template <typename... List1, typename... List2>
-        struct concat_<list<List1...>, list<List2...>> {
-            using type = list<List1..., List2...>;
-        };
+    template <typename... List1, typename... List2>
+    struct concat_<list<List1...>, list<List2...>> {
+        using type = list<List1..., List2...>;
+    };
 
-        template <typename... List1, typename... List2, typename... List3>
-        struct concat_<list<List1...>, list<List2...>, list<List3...>> {
-            using type = list<List1..., List2..., List3...>;
-        };
+    template <typename... List1, typename... List2, typename... List3>
+    struct concat_<list<List1...>, list<List2...>, list<List3...>> {
+        using type = list<List1..., List2..., List3...>;
+    };
 
-        template <typename... List1, typename... List2, typename... List3,
-                  typename... Rest>
-        struct concat_<list<List1...>, list<List2...>, list<List3...>, Rest...>
-            : concat_<list<List1..., List2..., List3...>, Rest...> {};
-    } // namespace detail
-    /// \endcond
+    template <typename... List1, typename... List2, typename... List3,
+              typename... Rest>
+    struct concat_<list<List1...>, list<List2...>, list<List3...>, Rest...>
+        : concat_<list<List1..., List2..., List3...>, Rest...> {};
+} // namespace detail
+/// \endcond
 
-    /// Concatenates several lists into a single list.
-    /// \pre The parameters must all be instantiations of \c typepack::list.
-    /// \par Complexity
-    /// \f$ O(L) \f$ where \f$ L \f$ is the number of lists in the list of
-    /// lists.
-    template <typename... Lists> using concat = t_<detail::concat_<Lists...>>;
+/// Concatenates several lists into a single list.
+/// \pre The parameters must all be instantiations of \c typepack::list.
+/// \par Complexity
+/// \f$ O(L) \f$ where \f$ L \f$ is the number of lists in the list of
+/// lists.
+template <typename... Lists> using concat = t_<detail::concat_<Lists...>>;
 
 } // namespace typepack
-} // namespace osvr

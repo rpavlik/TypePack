@@ -30,22 +30,20 @@
 // Standard includes
 #include <type_traits>
 
-namespace osvr {
 namespace typepack {
 
-    namespace detail {
-        /// Bind the first argument of std::is_same
-        template <typename T> struct is_ {
-            template <typename Elt> using apply = std::is_same<T, Elt>;
-        };
+namespace detail {
+    /// Bind the first argument of std::is_same
+    template <typename T> struct is_ {
+        template <typename Elt> using apply = std::is_same<T, Elt>;
+    };
 
-    } // namespace detail
+} // namespace detail
 
-    /// @brief Determines if type @p Needle is in the list @p Haystack - is an
-    /// alias for a type that inherits std::true_type or std::false_type.
-    template <typename Haystack, typename Needle>
-    using contains =
-        apply_list<quote<or_>, transform<Haystack, detail::is_<Needle>>>;
+/// @brief Determines if type @p Needle is in the list @p Haystack - is an
+/// alias for a type that inherits std::true_type or std::false_type.
+template <typename Haystack, typename Needle>
+using contains =
+    apply_list<quote<or_>, transform<Haystack, detail::is_<Needle>>>;
 
 } // namespace typepack
-} // namespace osvr

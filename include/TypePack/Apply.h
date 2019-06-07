@@ -36,10 +36,8 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
-    /// Apply an alias class
-    template <typename F, typename... Args>
-    using apply = typename F::template apply<Args...>;
+/// Apply an alias class
+template <typename F, typename... Args>
+using apply = typename F::template apply<Args...>;
 } // namespace typepack
-} // namespace osvr

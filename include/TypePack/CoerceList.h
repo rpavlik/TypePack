@@ -28,11 +28,9 @@
 // Standard includes
 // - none
 
-namespace osvr {
 namespace typepack {
 
-    /// @brief Will turn whatever is passed into it into the simplest list.
-    template <typename... Ts> using coerce_list = t_<list<Ts...>>;
+/// @brief Will turn whatever is passed into it into the simplest list.
+template <typename... Ts> using coerce_list = t_<list<Ts...>>;
 
 } // namespace typepack
-} // namespace osvr
