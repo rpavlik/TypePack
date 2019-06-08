@@ -54,7 +54,4 @@ namespace detail {
 /// @brief Get the size of a list (number of elements.)
 template <typename... Ts> using size = detail::size<coerce_list<Ts...>>;
 
-/// @brief Synonym for typepack::size
-template <typename... Ts> using length = size<coerce_list<Ts...>>;
-
 } // namespace typepack
