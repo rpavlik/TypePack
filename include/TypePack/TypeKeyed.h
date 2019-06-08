@@ -1,15 +1,21 @@
 /** @file
     @brief Header
 
-    @date 2015
+    @date 2015-2019
+
+    @author
+    Ryan Pavlik
+    <ryan.pavlik@collabora.com>
 
     @author
     Sensics, Inc.
     <http://sensics.com/osvr>
 */
 
-// Copyright 2015 Sensics, Inc.
-// TypePack is part of OSVR-Core.
+// Copyright 2019 Collabora, Ltd.
+// Copyright 2015-2017 Sensics, Inc.
+//
+// SPDX-License-Identifier: BSL-1.0
 //
 // Use, modification and distribution is subject to the
 // Boost Software License, Version 1.0. (See accompanying

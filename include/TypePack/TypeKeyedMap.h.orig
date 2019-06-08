@@ -1,29 +1,23 @@
 /** @file
-    @brief Header with run-time extensions to the TypePack simple
+    @brief Header with a run-time extensions to the TypePack simple
     template-parameter-pack-based metaprogramming library
 
-    @date 2015-2019
-
-    @author
-    Ryan Pavlik
-    <ryan.pavlik@collabora.com>
+    @date 2015
 
     @author
     Sensics, Inc.
     <http://sensics.com/osvr>
 */
 
-// Copyright 2019 Collabora, Ltd.
-// Copyright 2015-2017 Sensics, Inc.
-//
-// SPDX-License-Identifier: BSL-1.0
-//
-// TypePack was originally developed as part of OSVR-Core.
+// Copyright 2015 Sensics, Inc.
 //
 // Use, modification and distribution is subject to the
 // Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
+//
+// Project home: https://github.com/ericniebler/meta
+//
 
 #pragma once
 
@@ -51,7 +45,11 @@ namespace typepack {
 /// element access with a constant index)
 template <typename KeyList, typename ValueType>
 class TypeKeyedMap : public TypeKeyedBase<TypeKeyedMap<KeyList, ValueType>> {
+<<<<<<< HEAD
+    using size_constant = length<KeyList>;
+=======
     using size_constant = size<KeyList>;
+>>>>>>> 3f5d33f... Remove obsolete files
 
   public:
     using key_types = KeyList;

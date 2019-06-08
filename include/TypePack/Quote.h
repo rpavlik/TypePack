@@ -1,7 +1,11 @@
 /** @file
     @brief Header
 
-    @date 2015
+    @date 2015-2019
+
+    @author
+    Ryan Pavlik
+    <ryan.pavlik@collabora.com>
 
     @author
     Sensics, Inc.
@@ -11,10 +15,14 @@
     Eric Niebler
 */
 
-// Copyright 2015 Sensics, Inc.
-// TypePack is part of OSVR-Core.
+// Copyright 2019 Collabora, Ltd.
+// Copyright 2015-2017 Sensics, Inc.
 //
-// Incorporates code from "meta":
+// SPDX-License-Identifier: BSL-1.0
+//
+// TypePack was originally developed as part of OSVR-Core.
+//
+// This file incorporates code from "meta":
 // Copyright Eric Niebler 2014-2015
 //
 // Use, modification and distribution is subject to the

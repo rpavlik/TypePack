@@ -17,13 +17,16 @@
 */
 
 // Copyright 2019 Collabora, Ltd.
-// Copyright 2015-2017 Sensics, Inc.
+// Copyright 2015 Sensics, Inc.
+<<<<<<< HEAD
 //
 // SPDX-License-Identifier: BSL-1.0
 //
+=======
+>>>>>>> 70002d5... adjust meta header
 // TypePack was originally developed as part of OSVR-Core.
 //
-// Some files in this library incorporate code from "meta":
+// This file incorporates code from "meta":
 // Copyright Eric Niebler 2014-2015
 //
 // Use, modification and distribution is subject to the
@@ -42,12 +45,20 @@
 /// It includes an as-needed subset of the features of meta, modified as needed
 /// to build on MSVC 2013, as well as additional functionality not found in
 /// meta.
+<<<<<<< HEAD
 namespace typepack {
 // NOTE: Everything in this file up through the preceding line
 // will be included, in perhaps slightly-modified form,
 // in the combined headers generated from this library.
 
 } // namespace typepack
+=======
+namespace typepack {} // namespace typepack
+
+// NOTE: Everyting in this file above the "namespace typepack" line above
+// will be included, in perhaps slightly-modified form,
+// in the combined headers generated from this library.
+>>>>>>> 70002d5... adjust meta header
 
 // Full-include list simply generated as follows. (Yes, topological sort would
 // be preferred, I think.)
@@ -65,9 +76,10 @@ namespace typepack {
 #include "Defer.h"
 #include "FindFirst.h"
 #include "Fold.h"
-#include "ForEachType.h"
 #include "HasType.h"
+#include "Head.h"
 #include "If.h"
+#include "Length.h"
 #include "List.h"
 #include "Not.h"
 #include "Or.h"
@@ -79,8 +91,8 @@ namespace typepack {
 #include "SizeT.h"
 #include "SplitList.h"
 #include "T.h"
+#include "Tail.h"
 #include "Transform.h"
-#include "TypeKeyed.h"
 #include "TypeKeyedMap.h"
 #include "TypeKeyedTuple.h"
 #include "Void.h"

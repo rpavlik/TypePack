@@ -23,7 +23,7 @@
 */
 
 // Copyright 2019 Collabora, Ltd.
-// Copyright 2015 Sensics, Inc.
+// Copyright 2015-2017 Sensics, Inc.
 //
 // SPDX-License-Identifier: BSL-1.0
 //
