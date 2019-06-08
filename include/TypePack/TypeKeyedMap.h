@@ -23,7 +23,7 @@
 
 // Internal Includes
 #include "Contains.h"
-#include "Length.h"
+#include "Size.h"
 #include "TypeKeyed.h"
 
 // Library/third-party includes
@@ -45,7 +45,7 @@ namespace typepack {
 /// element access with a constant index)
 template <typename KeyList, typename ValueType>
 class TypeKeyedMap : public TypeKeyedBase<TypeKeyedMap<KeyList, ValueType>> {
-    using size_constant = length<KeyList>;
+    using size_constant = size<KeyList>;
 
   public:
     using key_types = KeyList;
