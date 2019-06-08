@@ -2,7 +2,11 @@
     @brief Header including all of a simple C++11 template-parameter-pack-based
    metaprogramming library inspired by/based on Eric Niebler's `meta`
 
-    @date 2015
+    @date 2015-2019
+
+    @author
+    Ryan Pavlik
+    <ryan.pavlik@collabora.com>
 
     @author
     Sensics, Inc.
@@ -12,8 +16,12 @@
     Eric Niebler
 */
 
+// Copyright 2019 Collabora, Ltd.
 // Copyright 2015 Sensics, Inc.
-// TypePack is part of OSVR-Core.
+//
+// SPDX-License-Identifier: BSL-1.0
+//
+// TypePack was originally developed as part of OSVR-Core.
 //
 // Some files in this library incorporate code from "meta":
 // Copyright Eric Niebler 2014-2015
@@ -34,7 +42,12 @@
 /// It includes an as-needed subset of the features of meta, modified as needed
 /// to build on MSVC 2013, as well as additional functionality not found in
 /// meta.
-namespace typepack {} // namespace typepack
+namespace typepack {
+// NOTE: Everything in this file up through the preceding line
+// will be included, in perhaps slightly-modified form,
+// in the combined headers generated from this library.
+
+} // namespace typepack
 
 // Full-include list simply generated as follows. (Yes, topological sort would
 // be preferred, I think.)
