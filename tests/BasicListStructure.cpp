@@ -26,6 +26,12 @@
 // Internal Includes
 #include "TypePackTestShared.h"
 
+#ifndef USE_SINGLE_HEADER
+#include <TypePack/CoerceList.h>
+#include <TypePack/Size.h>
+#include <TypePack/T.h>
+#endif // !USE_SINGLE_HEADER
+
 // Yes, I know these are all static (compile-time) tests, but using the Catch2
 // structure to split them into logical units.
 TEST_CASE("TypePack-basicListStructure") {

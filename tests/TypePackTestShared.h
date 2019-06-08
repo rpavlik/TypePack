@@ -31,7 +31,8 @@
 #ifdef USE_SINGLE_HEADER
 #include <TypePack.h>
 #else
-#include <TypePack/TypePack.h>
+#include <TypePack/CoerceList.h>
+#include <TypePack/List.h>
 #endif
 
 // Library/third-party includes

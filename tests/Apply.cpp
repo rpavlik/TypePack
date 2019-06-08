@@ -26,6 +26,12 @@
 // Internal Includes
 #include "TypePackTestShared.h"
 
+#ifndef USE_SINGLE_HEADER
+#include <TypePack/Always.h>
+#include <TypePack/Apply.h>
+#include <TypePack/Bool.h>
+#endif // !USE_SINGLE_HEADER
+
 // Yes, I know these are all static (compile-time) tests, but using the Catch2
 // structure to split them into logical units.
 
