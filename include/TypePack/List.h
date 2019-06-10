@@ -22,7 +22,7 @@
 //
 // TypePack was originally developed as part of OSVR-Core.
 //
-// Incorporates code from "meta":
+// This file incorporates code from "meta":
 // Copyright Eric Niebler 2014-2015
 //
 // Use, modification and distribution is subject to the
